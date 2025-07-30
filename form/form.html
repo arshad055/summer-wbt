@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet"type="text/css"  href="form.css">
+    <div class="nav-box">
+    <p id="start">*-Denotes Required Information </p>
+    
+    <p id="start"><strong>>1 Donation     2>Confirmation  >Thank You </strong> </p>
+</head>
+<h2 id="start">Donor Information</h2>
+<body>
+        
+    <form method="GET">
+        
+        
+        <div class="form-group">
+      <label for="firstName"><strong>First Name:</strong> </label>
+      <input type="text" id="firstName" name="firstName" required size="30"><br>
+
+      <label for="lastName"><strong>Last Name *:</strong></label>
+      <input type="text" id="lastName" name="lastName" required size="30"><br>
+
+      <label for="company"><strong>Company *:</strong></label>
+      <input type="text" id="company" name="company" required size="30"><br>
+
+      <label for="address1"><strong>Address 1 *:</strong></label>
+      <input type="text" id="address1" name="address1" required size="30"><br>
+
+      <label for="address2"><strong>Address 2:</strong></label>
+      <input type="text" id="address2" name="address2" size="30"><br>
+
+      <label for="city"><strong>City *:</strong></label>
+      <input type="text" id="city" name="city" required size="30"><br>
+
+      <label for="state"><strong>State *:</strong></label>
+      <select id="state" name="state"  required style="width: 247px" >
+        <option value="">--Select--</option >
+        <option value="Rangpur">Rangpur</option>
+        <option value="Sylhet">Sylhet</option>
+        <option value="Barishal">Barishal</option>
+        <option value="Mymensingh">Khulna</option>
+        <option value="Rajshahi">Rajshahi</option>
+        <option value="Chottogram">Chottogram</option>
+      </select><br>
+
+      <label for="zipcode"><strong>Zip Code *:</strong></label>
+      <input type="text" id="zipcode" name="zipcode" required size="30"><br>
+
+      <label for="country"><strong>Country *:</strong></label>
+      <select id="country" name="country" required style="width: 247px">
+        <option value="">--Select--</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="Canada">Canada</option>
+        <option value="Australia">Australia</option>
+        <option value="New Zealand">New Zealand</option>
+      </select><br>
+
+      <label for="phone"><strong>Phone *:</strong></label>
+      <input type="tel" id="phone" name="phone" required size="30"><br>
+
+      <label for="fax"><strong>Fax:</strong></label>
+      <input type="text" id="fax" name="fax" size="30"><br>
+
+      <label for="email"><strong>Email *:</strong></label>
+      <input type="email" id="email" name="email" required size="30"><br>
+    </div>
+
+    <div class="form-group">
+        <p style="white-space: nowrap;">
+      <strong>Donation Amount *:</strong>
+      <input type="radio" id="none" name="donation" value="None" required>
+      <label for="none">None</label>
+      <input type="radio" id="d50" name="donation" value="50">
+      <label for="d50">$50</label>
+      <input type="radio" id="d75" name="donation" value="75">
+      <label for="d75">$75</label>
+      <input type="radio" id="d100" name="donation" value="100">
+      <label for="d100">$100</label>
+      <input type="radio" id="d250" name="donation" value="250">
+      <label for="d250">$250</label>
+      <input type="radio" id="other" name="donation" value="Other">
+      <label for="other">Other</label><br>
+      </p>
+
+      <label for="otherAmount"><strong>Other Amount ($): </strong></label>
+      <input type="text" id="otherAmount" name="otherAmount" size="30"><br>
+<strong>Recurring Donation</strong>
+      <input type="checkbox" id="recurring" name="recurring" required>
+      <label for="recurring">I am interested in giving on a regular basis:</label><br>
+
+      <label for="monthly"><strong>Monthly Credit Card $:</strong></label>
+      <input type="text" id="monthly" name="monthly" maxlength="1" size="4">
+      <label for="months">For</label>
+      <input type="text" id="months" name="months"maxlength="1" size="4">Months<br>
+    </div>
+
+        
+<strong id="hono" >Honorarium and Memorial Donation Information :</strong> <br>
+<div class="form-group">
+        <strong>I would like to make this donation</strong>
+      <input type="radio" id="To Honor" name="donation" value="To Honor" required>
+      <label for="To Honor">To Honor</label><br>
+      <input type="radio" id="In memory of" name="donation" value="In memory of">
+      <label for="In memory of">In memory of</label>
+        <label for="In memory of">In memory of</label><br>
+       <label for="Name"><strong>Name: </strong></label>
+      <input type="text" id="Name" name="Name" required size="30"><br>
+       <label for="address"><strong>Address:</strong></label>
+      <input type="text" id="address" name="address" required size="30"><br>
+       <label for="city"><strong>City:</strong></label>
+      <input type="text" id="city" name="city" required size="30"><br>
+        <label for="state"><strong>State:</strong></label>
+      <select id="state" name="state" required style="width: 247px">
+        <option value="">--Select--</option>
+        <option value="Rangpur">Rangpur</option>
+        <option value="Sylhet">Sylhet</option>
+        <option value="Barishal">Barishal</option>
+        <option value="Dhaka">Dhaka</option>
+      </select><br>
+
+            <label for="zip"><strong>Zip:</strong></label>
+      <input type="text" id="zip" name="zip" required size="30"><br>
+        <div style="text-align: left;">
+  <p style="white-space: nowrap;">
+    <input type="checkbox" id="a1" name="a1" required>
+    <label for="a1">I would like my gift to remain anonymous.</label>
+  </p>
+
+  <p style="white-space: nowrap;">
+    <input type="checkbox" id="a2" name="a2" required>
+    <label for="a2">My employer offers a matching gift program. I will mail the matching gift form.</label>
+  </p>
+
+  <p style="white-space: nowrap;">
+    <input type="checkbox" id="a3" name="a3" required>
+    <label for="a3">Please save the cost of acknowledging this gift by not mailing a thank you letter.</label>
+  </p>
+</div>
+
+<div style="text-align: left;">
+<strong>Comment</strong><br>
+(please type any question or feedback here)<br>
+<textarea style="width: 300px; height: 50px;" required></textarea><br>
+
+<strong>How may we contack you?</strong><br>
+<input type="checkbox" id="E-mail" name="E-mail" value="HTML"required>
+        <label for="E-mail">E-mail</label><br>
+<input type="checkbox" id="Postal Mail" name="Postal Mail" value="HTML"required>
+        <label for="Postal Mail">Postal Mail</label><br>
+<input type="checkbox" id="Telephone" name="Telephone" value="HTML"required>
+        <label for="Telephone">Telephone</label><br>
+        <input type="checkbox" id="Fax" name="Fax" value="HTML"required>
+        <label for="Fax">Fax</label>
+        <p>I would like to receive newslatters and information about special events by: <br>
+<input type="checkbox" id="E-mail" name="E-mail" value="HTML"required>
+        <label for="E-mail"><strong>E-mail</strong></label><br>
+        <input type="checkbox" id="Postal mail" name="Postal mail" value="HTML"required>
+        <label for="Postal mail"><strong>Postal mail</strong></label><br>
+ <input type="checkbox" id="I would like about volunteering with the" name="I would like about volunteering with the" value="HTML"required>
+        <label for="I would like about volunteering with the">I would like about volunteering with the</label><br></p>
+        
+        
+    
+        </div>
+        <div style="text-align: center;">
+            <input type="reset" value="Reset">
+            <input type="submit" value="Continue"><br>
+        </div>
+        <br>
+        Donate online with confidence. You are on a secure server.<br>
+    If you have any problem or questions, please contact support
+        
+</form>
+</body>
+
+        </html>
+      
+
+
+

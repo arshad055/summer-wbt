@@ -1,0 +1,75 @@
+#profile-pic{
+    text-align: left;
+    float: left;
+}
+#name{
+    color:black;
+    text-align: left;
+    
+}
+strong{
+    color: red;
+}
+#skill{
+    display: inline;
+    font-size: xx-large;
+    font-style: italic;
+  color: white;
+  text-align: top;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-box {
+  border: 3px solid rgb(255, 255, 255);         
+  padding: 5px;                 
+  background-color: rgb(16, 73, 131);     
+  width: fit-content;            
+  margin: 20px auto;             
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+.nav-box a {
+  text-decoration: none;
+  color: rgb(241, 240, 240);
+  background-color: rgb(70, 159, 219);
+  border: 2px solid #fdfdfd;
+  padding: 10px 20px;
+  margin: 8px;
+  transition: 0.2s;
+}
+
+.nav-box a:hover {
+  background-color: #0056b3;
+  border-color: #003f7f;
+}
+
+p{
+    font-size: 20px;
+    color:rgb(251, 249, 247);
+    
+}
+h1{
+    color: aqua;
+    text-align: center;
+}
+
+h2{
+  color: aqua;
+}
+body {
+    background-image: url("../image/bg.jpg");
+    background-size: cover;
+
+}
+.pronav-box {
+  text-align: end;
+  padding: 5px;
+  margin: 10px;
+}
+.pronav-box :hover {
+  background-color: #3f1c80;
+  border-color: #003f7f;
+}

@@ -1,0 +1,88 @@
+#c{
+     text-align: center;
+     
+
+}
+.csh{
+display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     img{
+        height: 200;
+        width: 450;
+        margin: 30px;
+        
+    }
+
+}
+#cg{
+    text-align: center;
+}
+.cgr{
+    display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+      img{
+        height: 200;
+        width: 450;
+        margin: 30px;
+        
+    }
+}
+h1{
+    color: white;
+    text-align: center;
+}
+.java{
+    text-align: center;
+}
+.jav{
+    text-align: center;
+    font-size: 50px;
+    color: #e4ebf1;
+}
+.DB{
+    text-align: center;
+    font-size: 50px;
+    color: #e4ebf1;
+}
+.nav-box {
+  border: 3px solid rgb(255, 255, 255);         
+  padding: 5px;                 
+  background-color: rgb(16, 73, 131);     
+  width: fit-content;            
+  margin: 20px auto;             
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+.nav-box a {
+  text-decoration: none;
+  color: rgb(241, 240, 240);
+  background-color: rgb(70, 159, 219);
+  border: 2px solid #fdfdfd;
+  
+  padding: 10px 20px;
+  margin: 8px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.nav-box a:hover {
+  background-color: #0056b3;
+  border-color: #003f7f;
+}
+body {
+    background-image: url("../image/project\ bg2.jpg");
+    background-size: cover;
+
+}
+img{
+    transition: all 3s;
+}
+
+img:hover{
+
+    transform: scale(1.1);
+}
