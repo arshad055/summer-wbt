@@ -21,5 +21,4 @@ function checkReason() {
     }
 }
 
- 
 checkReason();
