@@ -1,7 +1,6 @@
 function checkReason() {
     var reason = prompt("What is the reason you want to contact?");
 
-    
     reason = reason.toLowerCase();
 
     if (reason === "job") {
