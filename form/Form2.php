@@ -1,162 +1,221 @@
-<!DOCTYPE HTML>  
+<?php
+// Define variables and set empty values
+$roll = $fname = $lname = $father = $day = $month = $year = $mobile = $email = $password = $gender = $city = $address = "";
+$errors = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Roll number
+    if (empty($_POST["roll"])) {
+        $errors[] = "Roll no. is required";
+    } else {
+        $roll = htmlspecialchars($_POST["roll"]);
+    }
+
+    // Student name
+    if (empty($_POST["fname"]) || empty($_POST["lname"])) {
+        $errors[] = "Full name is required";
+    } else {
+        $fname = htmlspecialchars($_POST["fname"]);
+        $lname = htmlspecialchars($_POST["lname"]);
+    }
+
+    // Father’s name
+    if (empty($_POST["father"])) {
+        $errors[] = "Father's name is required";
+    } else {
+        $father = htmlspecialchars($_POST["father"]);
+    }
+
+    // Date of birth
+    if (empty($_POST["day"]) || empty($_POST["month"]) || empty($_POST["year"])) {
+        $errors[] = "Date of birth is required";
+    }
+
+    // Mobile number
+    if (empty($_POST["mobile"])) {
+        $errors[] = "Mobile number is required";
+    } elseif (!preg_match("/^[0-9]{10}$/", $_POST["mobile"])) {
+        $errors[] = "Enter a valid 10-digit mobile number";
+    } else {
+        $mobile = $_POST["mobile"];
+    }
+
+    // Email
+    if (empty($_POST["email"])) {
+        $errors[] = "Email is required";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format";
+    } else {
+        $email = $_POST["email"];
+    }
+
+    // Password
+    if (empty($_POST["password"])) {
+        $errors[] = "Password is required";
+    } elseif (strlen($_POST["password"]) < 6) {
+        $errors[] = "Password must be at least 6 characters long";
+    } else {
+        $password = $_POST["password"];
+    }
+
+    // Gender
+    if (empty($_POST["gender"])) {
+        $errors[] = "Please select gender";
+    } else {
+        $gender = $_POST["gender"];
+    }
+
+    // City
+    if (empty($_POST["city"])) {
+        $errors[] = "City is required";
+    } else {
+        $city = htmlspecialchars($_POST["city"]);
+    }
+
+    // Address
+    if (empty($_POST["address"])) {
+        $errors[] = "Address is required";
+    } else {
+        $address = htmlspecialchars($_POST["address"]);
+    }
+
+    // If no errors, success
+    if (empty($errors)) {
+        echo "<h3 style='color:green; text-align:center;'>Registration Successful ✅</h3>";
+    }
+}
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
-<style>
-.error {color: #FF0000;}
-</style>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            background-color: #f8d7d7;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        form {
+            width: 600px;
+            margin: auto;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+            font-size: 18px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 400px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        textarea {
+            height: 70px;
+        }
+        .inline-input {
+            width: 120px;
+            display: inline-block;
+        }
+        .dob-input {
+            width: 100px;
+            display: inline-block;
+        }
+        .btn {
+            display: block;
+            margin: 15px auto;
+            padding: 8px 20px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>  
+<body>
 
-<?php
+    <h2>Student Registration Form</h2>
 
-$nameErr = $emailErr = $genderErr = $websiteErr = $rollErr = $dobErr = $fatherNameErr = "";
-$name = $email = $gender = $comment = $website = $roll = $dob_day = $dob_month = $dob_year = $fatherName = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-  
-  if (empty($_POST["roll"])) {
-    $rollErr = "Roll is required";
-  } else {
-    $roll = test_input($_POST["roll"]);
-    if (!is_numeric($roll)) {
-      $rollErr = "Only numeric values allowed for Roll";
+    <?php
+    if (!empty($errors)) {
+        echo "<div class='error'><ul>";
+        foreach ($errors as $error) {
+            echo "<li>$error</li>";
+        }
+        echo "</ul></div>";
     }
-  }
+    ?>
 
+    <form method="post" enctype="multipart/form-data">
 
-  if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
-  } else {
-    $name = test_input($_POST["name"]);
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-      $nameErr = "Only letters and white space allowed";
-    }
-  }
+        <label>Roll no. :</label>
+        <input type="text" name="roll" value="<?php echo $roll; ?>"><br><br>
 
+        <label>Student name :</label>
+        <input type="text" class="inline-input" name="fname" placeholder="First Name" value="<?php echo $fname; ?>"> -
+        <input type="text" class="inline-input" name="lname" placeholder="Last Name" value="<?php echo $lname; ?>"><br><br>
 
-  if (empty($_POST["fatherName"])) {
-    $fatherNameErr = "Father's Name is required";
-  } else {
-    $fatherName = test_input($_POST["fatherName"]);
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$fatherName)) {
-      $fatherNameErr = "Only letters and white space allowed";
-    }
-  }
-  
+        <label>Father's name :</label>
+        <input type="text" name="father" value="<?php echo $father; ?>"><br><br>
 
-  if (empty($_POST["email"])) {
-    $emailErr = "Email is required";
-  } else {
-    $email = test_input($_POST["email"]);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
-    }
-  }
-    
-  
-  if (empty($_POST["website"])) {
-    $website = "";
-  } else {
-    $website = test_input($_POST["website"]);
-    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-      $websiteErr = "Invalid URL";
-    }
-  }
+        <label>Date of birth :</label>
+        <input type="text" class="dob-input" name="day" placeholder="Day" value="<?php echo $day; ?>"> -
+        <input type="text" class="dob-input" name="month" placeholder="Month" value="<?php echo $month; ?>"> -
+        <input type="text" class="dob-input" name="year" placeholder="Year" value="<?php echo $year; ?>">
+        <span>(DD-MM-YYYY)</span><br><br>
 
+        <label>Mobile no. :</label>
+        <input type="text" class="inline-input" value="+91" disabled> -
+        <input type="text" class="inline-input" name="mobile" value="<?php echo $mobile; ?>"><br><br>
 
-  if (empty($_POST["comment"])) {
-    $comment = "";
-  } else {
-    $comment = test_input($_POST["comment"]);
-  }
+        <label>Email id :</label>
+        <input type="email" name="email" value="<?php echo $email; ?>"><br><br>
 
+        <label>Password :</label>
+        <input type="password" name="password"><br><br>
 
-  if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
-  } else {
-    $gender = test_input($_POST["gender"]);
-  }
+        <label>Gender :</label>
+        <input type="radio" name="gender" value="Male" <?php if ($gender=="Male") echo "checked"; ?>> Male
+        <input type="radio" name="gender" value="Female" <?php if ($gender=="Female") echo "checked"; ?>> Female<br><br>
 
+        <label>Department :</label>
+        <input type="checkbox" name="dept[]" value="CSE"> CSE
+        <input type="checkbox" name="dept[]" value="IT"> IT
+        <input type="checkbox" name="dept[]" value="ECE"> ECE
+        <input type="checkbox" name="dept[]" value="Civil"> Civil
+        <input type="checkbox" name="dept[]" value="Mech"> Mech<br><br>
 
+        <label>Course :</label>
+        <select name="course">
+            <option>---------------- Select Current Course's ----------------</option>
+            <option>B.Tech</option>
+            <option>BCA</option>
+            <option>MCA</option>
+            <option>M.Tech</option>
+        </select><br><br>
 
-  if (empty($dob_day) || empty($dob_month) || empty($dob_year)) {
-    $dobErr = "Complete Date of Birth is required";
-  }
-else {
-$dob_day = test_input($_POST["dob_day"]);
-$dob_month = test_input($_POST["dob_month"]);
-$dob_year = test_input($_POST["dob_year"]);
-}
-}
+        <label>Student photo :</label>
+        <input type="file" name="photo"><br><br>
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
+        <label>City :</label>
+        <input type="text" name="city" value="<?php echo $city; ?>"><br><br>
 
+        <label>Address :</label>
+        <textarea name="address"><?php echo $address; ?></textarea><br><br>
 
-?>
-
-<h2>PHP Form Validation Example</h2>
-<p><span class="error">* required field</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-
-Roll No: <input type="text" name="roll" value="<?php echo $roll;?>">
-  <span class="error">* <?php echo $rollErr;?></span>
-  <br><br>
-
-Student Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <span class="error">* <?php echo $nameErr;?></span>
-  <br><br>
-
-Father's Name: <input type="text" name="fatherName" value="<?php echo $fatherName;?>">
-  <span class="error">* <?php echo $fatherNameErr;?></span>
-  <br><br>
-
-Date of Birth: 
-<input type="text" name="dob_day" size="2" placeholder="DD" value="<?php echo $dob_day;?>"> /
-<input type="text" name="dob_month" size="2" placeholder="MM" value="<?php echo $dob_month;?>"> /
-<input type="text" name="dob_year" size="4" placeholder="YYYY" value="<?php echo $dob_year;?>">
-<span class="error">* <?php echo $dobErr;?></span>
-<br><br>
-
-E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-
-Website: <input type="text" name="website" value="<?php echo $website;?>">
-  <span class="error"><?php echo $websiteErr;?></span>
-  <br><br>
-
-Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-  <br><br>
-
-Gender:
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other  
-  <span class="error">* <?php echo $genderErr;?></span>
-  <br><br>
-
-<input type="submit" name="submit" value="Submit">  
-</form>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  echo "<h2>Your Input:</h2>";
-  echo "Roll: " . $roll . "<br>";
-  echo "Student Name: " . $name . "<br>";
-  echo "Father's Name: " . $fatherName . "<br>";
-  echo "Email: " . $email . "<br>";
-  echo "Website: " . $website . "<br>";
-  echo "Comment: " . $comment . "<br>";
-  echo "Gender: " . $gender . "<br>";
-  echo "Date of Birth: " . $dob_day . "-" . $dob_month . "-" . $dob_year . "<br>";
-}
-?>
+        <input type="submit" class="btn" value="Register">
+    </form>
 
 </body>
 </html>
